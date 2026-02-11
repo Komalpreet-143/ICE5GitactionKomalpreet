@@ -1,0 +1,57 @@
+## YAML Template.
+---
+
+name: Multi-Platform Testing
+
+on: push
+jobs:
+
+  ubuntu-job:
+    name: Ubuntu Job
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Display OS info
+        run: uname -a
+
+      - name: Create and display file
+        run: |
+          echo "This is Ubuntu" > ubuntu.txt
+          cat ubuntu.txt
+
+
+  windows-job:
+    name: Windows Job
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Display OS info
+        run: systeminfo
+
+      - name: Create and display file
+        run: |
+          echo This is Windows > windows.txt
+          type windows.txt
+
+
+  macos-job:
+    name: macOS Job
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Display OS info
+        run: uname -a
+
+      - name: Create and display file
+        run: |
+          echo "This is macOS" > macos.txt
+          cat macos.txt
